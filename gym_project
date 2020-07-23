@@ -1,0 +1,108 @@
+import datetime
+
+
+def getdate():
+    """This function returns the current time..."""
+    return datetime.datetime.now()
+
+
+def log():
+    """This function add data to the desired file..."""
+    client = int(input("Enter client name? [1 for Hilal, 2 for Usman and 3 for Musa]: "))
+    if client == 1:
+        l_data = input("What do You want to log? [diet or exercise]: ")
+        if l_data == 'diet':
+            data = input("Type here: ")
+            with open("Hilal_diet.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        elif l_data == 'exercise':
+            data = input("Type here: ")
+            with open("Hilal_exercise.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        else:
+            print("Wrong input!")
+    elif client == 2:
+        l_data = input("What do You want to log? [diet or exercise]: ")
+        if l_data == 'diet':
+            data = input("Type here: ")
+            with open("Usman_diet.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        elif l_data == 'exercise':
+            data = input("Type here: ")
+            with open("Usman_exercise.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        else:
+            print("Wrong input!")
+    elif client == 3:
+        l_data = input("What do You want to log? [diet or exercise]: ")
+        if l_data == 'diet':
+            data = input("Type here: ")
+            with open("Musa_diet.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        elif l_data == 'exercise':
+            data = input("Type here: ")
+            with open("Musa_exercise.txt", "a") as f:
+                f.write(f'[{getdate()}] >> {data}\n')
+                print("Successfully added")
+        else:
+            print("Wrong input!")
+    else:
+        print("Wrong input!")
+
+
+def retrieve():
+    """This function retrieve data from the desired file..."""
+    client = int(input("Enter client name? [1 for Hilal, 2 for Usman and 3 for Musa]: "))
+    if client == 1:
+        r_data = input("What do You want to retrieve? [diet or exercise}: ")
+        if r_data == 'diet':
+            with open("Hilal_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        elif r_data == 'exercise':
+            with open("Hilal_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        else:
+            print("Wrong input!")
+    elif client == 2:
+        r_data = input("What do You want to retrieve? [diet or exercise}: ")
+        if r_data == 'diet':
+            with open("Usman_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        elif r_data == 'exercise':
+            with open("Usman_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        else:
+            print("Wrong input!")
+    elif client == 3:
+        r_data = input("What do You want to retrieve? [diet or exercise}: ")
+        if r_data == 'diet':
+            with open("Musa_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        elif r_data == 'exercise':
+            with open("Musa_diet.txt") as f:
+                for data in f:
+                    print(data, end='')
+        else:
+            print("Wrong input!")
+    else:
+        print("Wrong input!")
+
+
+log_or_retrieve = input("Do You want to log or retrieve data? [log or retrieve]: ")
+if log_or_retrieve == 'log':
+    log()
+elif log_or_retrieve == 'retrieve':
+    retrieve()
+else:
+    print("Wrong input!")
+
