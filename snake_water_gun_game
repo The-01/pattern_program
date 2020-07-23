@@ -1,0 +1,81 @@
+import random
+
+print('\t"Snake Water Gun Game"\n')
+
+user_points = 0
+computer_points = 0
+ran_list = ["snake", "water", "gun"]
+user_choice = input("What is your choice? [ snake/water/gun ]: ")
+
+n = 1
+play_limit = 10
+while n <= play_limit:
+    computer_choice = random.choice(ran_list)
+
+    if user_choice.lower() == 'snake' and computer_choice == 'water':
+        user_points += 1
+        print("\nYou win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif user_choice.lower() == 'water' and computer_choice == 'gun':
+        user_points += 1
+        print("\nYou win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif user_choice.lower() == 'gun' and computer_choice == 'snake':
+        user_points += 1
+        print("\nYou win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif user_choice.lower() == 'snake' and computer_choice == 'gun':
+        computer_points += 1
+        print("\nComputer win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif user_choice.lower() == 'water' and computer_choice == 'snake':
+        computer_points += 1
+        print("\nComputer win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif user_choice.lower() == 'gun' and computer_choice == 'water':
+        computer_points += 1
+        print("\nComputer win!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    elif (user_choice.lower() == 'snake' and computer_choice == 'snake') or (
+            user_choice.lower() == 'water' and computer_choice == 'water') or (
+            user_choice.lower() == 'gun' and computer_choice == 'gun'):
+        print("\nGame draw!")
+        n = n + 1
+        user_choice = input("Next turn... Enter your choice again? [ snake/water/gun ]: ")
+        continue
+
+    else:
+        print("\nWrong input!")
+        print("Sorry! Try again")
+        break
+
+else:
+    print("\nPlay limit exceeded!")
+    print("\nMy points  = ", user_points)
+    print("Computer points = ", computer_points)
+
+if user_points > computer_points:
+    print("\tCongrats! You are the winner")
+elif user_points < computer_points:
+    print("\tSorry! You lost the game... Better luck next time")
+else:
+    print("\tTie!")
+
