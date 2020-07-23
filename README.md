@@ -1,2 +1,3 @@
-# pattern_program
-This is a program to print "*" pattern in python.
+# Python_Small_projects
+ These are some small projects which I created while I was learning python.
+ Hope You will appreciate...
