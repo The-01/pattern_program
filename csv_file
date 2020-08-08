@@ -1,0 +1,83 @@
+import csv
+
+
+class College:
+    """This class contains 3 functions, store_data, display_data, remove_data and some attributes..."""
+    
+    def store_data(self):
+        """This function stores the given input data into a .csv file"""
+        
+        with open("colleges.csv", "a", newline="") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow([clg.collegeId, clg.collegeName, clg.courseType, clg.city, clg.fees, clg.pinCode])
+            print("CSV file updated successfully")
+
+    def display_data(self):
+        """This function displays the details of colleges in a city when city name is given as an input"""
+        
+        lines = list()
+        with open("colleges.csv", "r") as csv_file:
+            reader = csv.reader(csv_file)
+            for row in reader:
+                for city_name in row:
+                    if city_name == clg.city:
+                        lines.append(row)
+        with open("updated_colleges.csv", "w", newline="") as updated_csv_file:
+            writer = csv.writer(updated_csv_file)
+            writer.writerows(lines)
+            print("\nHere are the required details")
+            print(lines)
+
+    def remove_data(self):
+        """This function removes matching collegeId(given as input by the user) data from .csv file"""
+        
+        lines = list()
+        with open("colleges.csv", "r") as csv_file:
+            reader = csv.reader(csv_file)
+            for row in reader:
+                lines.append(row)
+                for field in row:
+                    if field == clg.collegeId:
+                        lines.remove(row)
+        with open("updated_colleges.csv", "w", newline="") as updated_csv_file:
+            writer = csv.writer(updated_csv_file)
+            writer.writerows(lines)
+            print("\n CSV file updated successfully")
+
+
+clg = College()
+
+if __name__ == '__main__':
+    help = input("""
+Hello Sir, How can we help You?
+> To register a new college, type 'register'
+> To display college details, type 'display'
+> To delete desired college data, enter 'delete'
+        """).lower()
+    if help == 'register':
+        clg.collegeId = input("Enter college id: ")
+        clg.collegeName = input("Enter college name: ")
+        clg.courseType = input("Enter course type: ")
+        clg.city = input("Enter city name: ")
+        clg.fees = input("Enter fees amount: ")
+        clg.pinCode = input("Enter pin code: ")
+        clg.store_data()
+
+    elif help == 'display':
+        clg.city = input("Enter the name of the city [Make sure the first letter is capital]: ")
+        if clg.city == "Mumbai":
+            clg.display_data()
+        else:
+            print("Please enter correct city name...")
+
+    elif help == 'delete':
+        allow = input("\nAre You sure, You want to remove college data? [yes/no]: ")
+        if allow.lower() == 'yes':
+            clg.collegeId = input("Okay, enter college id: ")
+            clg.remove_data()
+        else:
+            print("Thank You Sir!")
+
+    else:
+        print("Wrong input!")
+
