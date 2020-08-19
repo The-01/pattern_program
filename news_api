@@ -1,0 +1,25 @@
+def speak(string):
+    from win32com.client import Dispatch
+
+    s = Dispatch("SAPI.SpVoice")
+    s.Speak(string)
+
+
+if __name__ == '__main__':
+    import requests
+    import json
+
+    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=ac6d3adb2a77407780e22e5b4b799194"
+    response = requests.get(url)
+    text = response.text
+    my_json = json.loads(text)
+
+    speak("Welcome to the news portal... Starting our headlines..............")
+    for i in range(1, 11):
+        speak(f"News number{i} is...")
+        speak(my_json['articles'][i]['title'])
+        speak("The description of above news is..." + my_json['articles'][i]['description'])
+
+    else:
+        speak("Thanks for listening to our news.... Stay with us for more news updates.")
+
