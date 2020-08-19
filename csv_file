@@ -64,7 +64,7 @@ Hello Sir, How can we help You?
         clg.store_data()
 
     elif help == 'display':
-        clg.city = input("Enter the name of the city [Make sure the first letter is capital]: ")
+        clg.city = input("Enter the name of the city: ").capitalize()
         if clg.city == "Mumbai":
             clg.display_data()
         else:
