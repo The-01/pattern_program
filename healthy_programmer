@@ -1,0 +1,51 @@
+from pygame import mixer
+from datetime import datetime
+from time import time
+
+print('\t"Healthy Programmer"\n')
+
+
+def alarm(file, stop):
+    mixer.init()
+    mixer.music.load(file)
+    mixer.music.play()
+
+    while True:
+        user_input = input("Enter 'stop' to stop the alarm: ")
+        if user_input.lower() == "stop":
+            mixer.music.stop()
+            break
+
+
+def log_data(data):
+    with open("mylogs.txt", "a") as f:
+        f.write(f"{data} {datetime.now()}\n")
+
+
+if __name__ == '__main__':
+    init_water = time()
+    water_time = 40 * 60
+    init_eyes_ex = time()
+    eyes_ex_time = 45 * 60
+    init_pyhsical_ex = time()
+    physical_ex_time = 30 * 60
+
+    while True:
+        if time() - init_water > water_time:
+            w = input("It's time to drink water... Enter 'drank' to stop alarm: ")
+            alarm("water.mp3", w)
+            init_water = time()
+            log_data("Drank water at ")
+
+        if time() - init_eyes_ex > eyes_ex_time:
+            e = input("Eyes exercise time... Enter 'done' to stop alarm:")
+            alarm("eyes.mp3", e)
+            init_eyes_ex = time()
+            log_data("Done eyes exercise at ")
+
+        if time() - init_pyhsical_ex > physical_ex_time:
+            p = input("Physical exercise time... Enter 'done' to stop alarm: ")
+            alarm("physical.mp3", p)
+            init_pyhsical_ex = time()
+            log_data("Done physical exercise at ")
+
