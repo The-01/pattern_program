@@ -1,0 +1,27 @@
+import os
+
+
+def soldier(path, folder, file_format):
+    os.chdir(path)
+    files = os.listdir(path)
+    i = 1
+    for item in files:
+        if item.endswith(file_format):
+            os.rename(item, f"{i}{file_format}")
+            i += 1
+    print(f"All '{file_format}' files formatted successfully\n")
+
+    os.chdir(folder)
+    files = os.listdir(folder)
+    for item in files:
+        os.rename(item, item.capitalize())
+    print("All file names and folders capitalized")
+
+
+if __name__ == '__main__':
+    path = r"C:\Users\spogm\OneDrive\Desktop\abc"
+    folder = r"C:\Users\spogm\OneDrive\Desktop\abc\abcd"
+    file_format = ".txt"
+
+    soldier(path, folder, file_format)
+
